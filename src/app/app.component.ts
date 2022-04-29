@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.reservationService.apiReservationsItemIdGet$Json({ id: this.reservationItem?.id }).subscribe(reservations => (this.itemReservations = reservations));
+   // this.reservationService.apiReservationsItemIdGet$Json({ id: this.reservationItem?.id }).subscribe(reservations => (this.itemReservations = reservations));
   }
   getUsers(): void {
     this.userService.apiUsersGet$Json().subscribe(users => this.users = users);
@@ -223,7 +223,7 @@ export class AppComponent implements OnInit {
 
   onEditUser({ value, valid }: { value: UserDto, valid: boolean }) {
     console.log(value, valid);
-    this.userService.apiUsersUsernamePut$Json({ username: this.myUser.userName, body: value }).subscribe((response) => {
+    this.userService.apiUsersUsernamePut({ username: this.myUser.userName, body: value }).subscribe((response) => {
       console.log(response);
     });
   }

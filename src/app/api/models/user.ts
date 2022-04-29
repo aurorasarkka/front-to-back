@@ -5,7 +5,7 @@ export interface User {
   id?: number;
   isAdmin?: boolean;
   lastName?: null | string;
-  password: string;
+  passWord: string;
   salt?: null | string;
   userName: string;
 }

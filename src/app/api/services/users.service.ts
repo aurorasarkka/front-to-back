@@ -39,7 +39,7 @@ export class UsersService extends BaseService {
    * This method doesn't expect any request body.
    */
   apiUsersGet$Plain$Response(params?: {
-  }): Observable<StrictHttpResponse<Array<UserDto>>> {
+  }): Observable<StrictHttpResponse<Array<User>>> {
 
     const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersGetPath, 'get');
     if (params) {
@@ -51,7 +51,7 @@ export class UsersService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<UserDto>>;
+        return r as StrictHttpResponse<Array<User>>;
       })
     );
   }
@@ -67,10 +67,10 @@ export class UsersService extends BaseService {
    * This method doesn't expect any request body.
    */
   apiUsersGet$Plain(params?: {
-  }): Observable<Array<UserDto>> {
+  }): Observable<Array<User>> {
 
     return this.apiUsersGet$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<UserDto>>) => r.body as Array<UserDto>)
+      map((r: StrictHttpResponse<Array<User>>) => r.body as Array<User>)
     );
   }
 
@@ -85,7 +85,7 @@ export class UsersService extends BaseService {
    * This method doesn't expect any request body.
    */
   apiUsersGet$Json$Response(params?: {
-  }): Observable<StrictHttpResponse<Array<UserDto>>> {
+  }): Observable<StrictHttpResponse<Array<User>>> {
 
     const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersGetPath, 'get');
     if (params) {
@@ -97,7 +97,7 @@ export class UsersService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<UserDto>>;
+        return r as StrictHttpResponse<Array<User>>;
       })
     );
   }
@@ -113,10 +113,10 @@ export class UsersService extends BaseService {
    * This method doesn't expect any request body.
    */
   apiUsersGet$Json(params?: {
-  }): Observable<Array<UserDto>> {
+  }): Observable<Array<User>> {
 
     return this.apiUsersGet$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<UserDto>>) => r.body as Array<UserDto>)
+      map((r: StrictHttpResponse<Array<User>>) => r.body as Array<User>)
     );
   }
 
@@ -240,135 +240,15 @@ export class UsersService extends BaseService {
   }
 
   /**
-   * Path part for operation apiUsersIdGet
-   */
-  static readonly ApiUsersIdGetPath = '/api/Users/{id}';
-
-  /**
-   * Gets one user.
-   *
-   *
-   *
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersIdGet()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  apiUsersIdGet$Response(params: {
-
-    /**
-     * user id
-     */
-    id: number;
-  }): Observable<StrictHttpResponse<UserDto>> {
-
-    const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersIdGetPath, 'get');
-    if (params) {
-      rb.path('id', params.id, {});
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'json',
-      accept: 'application/json'
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<UserDto>;
-      })
-    );
-  }
-
-  /**
-   * Gets one user.
-   *
-   *
-   *
-   * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersIdGet$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  apiUsersIdGet(params: {
-
-    /**
-     * user id
-     */
-    id: number;
-  }): Observable<UserDto> {
-
-    return this.apiUsersIdGet$Response(params).pipe(
-      map((r: StrictHttpResponse<UserDto>) => r.body as UserDto)
-    );
-  }
-
-  /**
-   * Path part for operation apiUsersIdDelete
-   */
-  static readonly ApiUsersIdDeletePath = '/api/Users/{id}';
-
-  /**
-   * Delete a user.
-   *
-   *
-   *
-   * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersIdDelete()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  apiUsersIdDelete$Response(params: {
-
-    /**
-     * Id of user to be deleted
-     */
-    id: number;
-  }): Observable<StrictHttpResponse<void>> {
-
-    const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersIdDeletePath, 'delete');
-    if (params) {
-      rb.path('id', params.id, {});
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'text',
-      accept: '*/*'
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
-      })
-    );
-  }
-
-  /**
-   * Delete a user.
-   *
-   *
-   *
-   * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersIdDelete$Response()` instead.
-   *
-   * This method doesn't expect any request body.
-   */
-  apiUsersIdDelete(params: {
-
-    /**
-     * Id of user to be deleted
-     */
-    id: number;
-  }): Observable<void> {
-
-    return this.apiUsersIdDelete$Response(params).pipe(
-      map((r: StrictHttpResponse<void>) => r.body as void)
-    );
-  }
-
-  /**
    * Path part for operation apiUsersUsernameGet
    */
   static readonly ApiUsersUsernameGetPath = '/api/Users/{username}';
 
   /**
+   * Gets one user.
+   *
+   *
+   *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `apiUsersUsernameGet()` instead.
    *
@@ -395,6 +275,10 @@ export class UsersService extends BaseService {
   }
 
   /**
+   * Gets one user.
+   *
+   *
+   *
    * This method provides access to only to the response body.
    * To access the full response (for headers, for example), `apiUsersUsernameGet$Response()` instead.
    *
@@ -420,18 +304,18 @@ export class UsersService extends BaseService {
    *
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersUsernamePut$Plain()` instead.
+   * To access only the response body, use `apiUsersUsernamePut()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiUsersUsernamePut$Plain$Response(params: {
+  apiUsersUsernamePut$Response(params: {
     username: string;
 
     /**
-     * User's new information
+     * User´s new information
      */
     body?: UserDto
-  }): Observable<StrictHttpResponse<UserDto>> {
+  }): Observable<StrictHttpResponse<void>> {
 
     const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersUsernamePutPath, 'put');
     if (params) {
@@ -441,11 +325,11 @@ export class UsersService extends BaseService {
 
     return this.http.request(rb.build({
       responseType: 'text',
-      accept: 'text/plain'
+      accept: '*/*'
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<UserDto>;
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
       })
     );
   }
@@ -456,47 +340,107 @@ export class UsersService extends BaseService {
    *
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersUsernamePut$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersUsernamePut$Response()` instead.
    *
    * This method sends `application/*+json` and handles request body of type `application/*+json`.
    */
-  apiUsersUsernamePut$Plain(params: {
+  apiUsersUsernamePut(params: {
     username: string;
 
     /**
-     * User's new information
+     * User´s new information
      */
     body?: UserDto
-  }): Observable<UserDto> {
+  }): Observable<void> {
 
-    return this.apiUsersUsernamePut$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<UserDto>) => r.body as UserDto)
+    return this.apiUsersUsernamePut$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }
 
   /**
-   * Edit user.
+   * Path part for operation apiUsersIdDelete
+   */
+  static readonly ApiUsersIdDeletePath = '/api/Users/{id}';
+
+  /**
+   * Delete a user.
    *
    *
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiUsersUsernamePut$Json()` instead.
+   * To access only the response body, use `apiUsersIdDelete$Plain()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiUsersUsernamePut$Json$Response(params: {
-    username: string;
+  apiUsersIdDelete$Plain$Response(params: {
 
     /**
-     * User's new information
+     * Id of user to be deleted
      */
-    body?: UserDto
-  }): Observable<StrictHttpResponse<UserDto>> {
+    id: number;
+  }): Observable<StrictHttpResponse<User>> {
 
-    const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersUsernamePutPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersIdDeletePath, 'delete');
     if (params) {
-      rb.path('username', params.username, {});
-      rb.body(params.body, 'application/*+json');
+      rb.path('id', params.id, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: 'text/plain'
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<User>;
+      })
+    );
+  }
+
+  /**
+   * Delete a user.
+   *
+   *
+   *
+   * This method provides access to only to the response body.
+   * To access the full response (for headers, for example), `apiUsersIdDelete$Plain$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiUsersIdDelete$Plain(params: {
+
+    /**
+     * Id of user to be deleted
+     */
+    id: number;
+  }): Observable<User> {
+
+    return this.apiUsersIdDelete$Plain$Response(params).pipe(
+      map((r: StrictHttpResponse<User>) => r.body as User)
+    );
+  }
+
+  /**
+   * Delete a user.
+   *
+   *
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `apiUsersIdDelete$Json()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  apiUsersIdDelete$Json$Response(params: {
+
+    /**
+     * Id of user to be deleted
+     */
+    id: number;
+  }): Observable<StrictHttpResponse<User>> {
+
+    const rb = new RequestBuilder(this.rootUrl, UsersService.ApiUsersIdDeletePath, 'delete');
+    if (params) {
+      rb.path('id', params.id, {});
     }
 
     return this.http.request(rb.build({
@@ -505,32 +449,31 @@ export class UsersService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<UserDto>;
+        return r as StrictHttpResponse<User>;
       })
     );
   }
 
   /**
-   * Edit user.
+   * Delete a user.
    *
    *
    *
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiUsersUsernamePut$Json$Response()` instead.
+   * To access the full response (for headers, for example), `apiUsersIdDelete$Json$Response()` instead.
    *
-   * This method sends `application/*+json` and handles request body of type `application/*+json`.
+   * This method doesn't expect any request body.
    */
-  apiUsersUsernamePut$Json(params: {
-    username: string;
+  apiUsersIdDelete$Json(params: {
 
     /**
-     * User's new information
+     * Id of user to be deleted
      */
-    body?: UserDto
-  }): Observable<UserDto> {
+    id: number;
+  }): Observable<User> {
 
-    return this.apiUsersUsernamePut$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<UserDto>) => r.body as UserDto)
+    return this.apiUsersIdDelete$Json$Response(params).pipe(
+      map((r: StrictHttpResponse<User>) => r.body as User)
     );
   }
 

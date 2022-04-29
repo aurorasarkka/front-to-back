@@ -7,6 +7,7 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 import { ItemsService } from './services/items.service';
 import { ReservationsService } from './services/reservations.service';
 import { UsersService } from './services/users.service';
+import { WeatherForecastService } from './services/weather-forecast.service';
 
 /**
  * Module that provides all services and configuration.
@@ -19,6 +20,7 @@ import { UsersService } from './services/users.service';
     ItemsService,
     ReservationsService,
     UsersService,
+    WeatherForecastService,
     ApiConfiguration
   ],
 })

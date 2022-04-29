@@ -5,3 +5,4 @@ export { Reservation } from './models/reservation';
 export { ReservationDto } from './models/reservation-dto';
 export { User } from './models/user';
 export { UserDto } from './models/user-dto';
+export { WeatherForecast } from './models/weather-forecast';

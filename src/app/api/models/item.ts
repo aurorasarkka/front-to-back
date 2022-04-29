@@ -5,6 +5,6 @@ export interface Item {
   description?: null | string;
   id?: number;
   image?: null | string;
-  name: string;
+  name?: null | string;
   owner?: User;
 }
